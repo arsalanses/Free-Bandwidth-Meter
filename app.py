@@ -1,2 +1,2 @@
 import psutil
-print(psutil.net_io_counters(pernic=True))
+print(psutil.net_io_counters(pernic=True)['Wi-Fi'])
