@@ -18,7 +18,7 @@ while 1:
     if traffic != psutil.net_io_counters().bytes_sent / 1000000 + psutil.net_io_counters().bytes_recv / 1000000:
         traffic = psutil.net_io_counters().bytes_sent / 1000000 + psutil.net_io_counters().bytes_recv / 1000000
         clear()
-        print("Today usage: {}".format(traffic))
+        print("Today usage: {0:.2f}".format(traffic))
         if traffic > MAX_USAGE:
-            print('Today you spend more than {} MegaBytes!'.format(traffic))
+            print('Today you spend more than {0:.2f} MegaBytes!'.format(traffic))
         sleep(5)
