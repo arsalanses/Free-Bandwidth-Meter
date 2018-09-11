@@ -1,5 +1,6 @@
 import psutil
 from os import system, name
+from time import sleep
 
 def clear(): 
     # for windows 
@@ -16,3 +17,4 @@ while 1:
         net = psutil.net_io_counters(pernic=True)['Wi-Fi'][1] / 1000000
         clear()
         print("Megabytes_recv: {}".format(net))
+        sleep(5)
