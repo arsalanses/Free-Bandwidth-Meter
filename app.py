@@ -12,13 +12,13 @@ def clear():
     else: 
         _ = system('clear') 
 
-traffic = psutil.net_io_counters(pernic=True)['Wi-Fi'][1] / 1000000
+traffic = psutil.net_io_counters().bytes_sent / 1000000 + psutil.net_io_counters().bytes_recv / 1000000
 
 while 1:
-    if traffic != psutil.net_io_counters(pernic=True)['Wi-Fi'][1] / 1000000:
-        traffic = psutil.net_io_counters(pernic=True)['Wi-Fi'][1] / 1000000
+    if traffic != psutil.net_io_counters().bytes_sent / 1000000 + psutil.net_io_counters().bytes_recv / 1000000:
+        traffic = psutil.net_io_counters().bytes_sent / 1000000 + psutil.net_io_counters().bytes_recv / 1000000
         clear()
-        print("Megabytes_recv: {}".format(traffic))
+        print("Today usage: {}".format(traffic))
         if traffic > MAX_USAGE:
             print('Today you spend more than {} MegaBytes!'.format(traffic))
         sleep(5)
