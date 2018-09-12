@@ -17,6 +17,7 @@ pip install psutil
 ## Authors
 
 * **Arsalan Sefidgar** - *Student at university of tabriz* - [Twitter](https://twitter.com/arsalanse) - [Instagram](https://www.instagram.com/arsalanse/)
+* **Amir Mohamadi** - *BSc Computer Engineering (Birjand University)* - [Instagram](https://www.instagram.com/amiremohamadi/)
 
 ## License
 
