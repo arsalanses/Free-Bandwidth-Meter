@@ -17,7 +17,7 @@ def clear():
 
 old_traffic = 0
 fieldnames = ['date', 'traffic']
-db = []
+db = {}
 
 while True:
     traffic = psutil.net_io_counters().bytes_sent / 1000000 + psutil.net_io_counters().bytes_recv / 1000000
@@ -28,13 +28,17 @@ while True:
         
     with open('DB.csv', mode = 'r') as outfile:
         reader = csv.DictReader(outfile)
-        db = list(reader)
+        db = {row['date'] : row['traffic'] for row in reader}
         outfile.close()
 
+    # update traffic by date, if date doesn't exist
+    # add new date and traffic to dictionary
+    db[DATE] = old_traffic
+
     with open('DB.csv', 'w') as infile:
-        writer = csv.DictWriter(infile, fieldnames = fieldnames)
+        writer = csv.DictWriter(infile, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerow({"date": DATE, "traffic": old_traffic})
+        for key in db:  writer.writerow({'date': key, 'traffic': db[key]})
         infile.close()
 
     if old_traffic > MAX_USAGE:
